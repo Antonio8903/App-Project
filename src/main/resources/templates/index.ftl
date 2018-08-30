@@ -9,10 +9,20 @@
   </head>
   <body>
     <div class="container">
-    	<nav class="navbar navbar-dark bg-primary">
-  			<a class="navbar-brand" href="#">Estudiantes</a>
+    	<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  			<a class="navbar-brand" href="/">Estudiantes</a>
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span class="navbar-toggler-icon"></span>
+		    </button>
+  			<div class="collapse navbar-collapse" id="navbarNav">
+    			<ul class="navbar-nav">
+      				<li class="nav-item active">
+        				<a class="nav-link" href="/create">Crear</a>
+      				</li>
+  				</ul>
+  			</div>
 		</nav>
-	</div>
+    </div>
 	
 	<br /><br /><br /><br />
 	
@@ -25,22 +35,24 @@
 				      <th scope="col">Apellidos</th>
 				      <th scope="col">Email</th>
 				      <th scope="col">Edad</th>
-				      <th scope="col">Celular</th>
+				      <th scope="col">Documento de identidad</th>
 				      <th scope="col-1"></th>
 				    </tr>
   				</thead>
 			  	<tbody>
-			    	<tr>
-			      		<th scope="row">1</th>
-			      		<td>Mark</td>
-			      		<td>Otto</td>
-			      		<td>@mdo</td>
-			      		<td>@mdo</td>
-			      		<td>
-			      			<button type="button" class="btn btn-success">Editar</button>
-			      			<button type="button" class="btn btn-danger">Eliminar</button>
-			      		</td>
-			    	</tr>
+			  		<#list students as student>
+  						<tr>
+				      		<th scope="row">${student.name}</th>
+				      		<td>${student.lastName}</td>
+				      		<td>${student.email}</td>
+				      		<td>${student.age}</td>
+				      		<td>${student.identificationDocument}</td>
+				      		<td>
+				      			<a class="btn btn-danger" href="/student/delete/${student.id}" role="button">Eliminar</a>
+				      			<a class="btn btn-success" href="/student/edit/${student.id}" role="button">Editar</a>
+				      		</td>
+			    		</tr>
+					</#list>
 			    </tbody>
 			</table>
     	</div>
